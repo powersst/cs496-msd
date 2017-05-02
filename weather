@@ -1,0 +1,35 @@
+mWeatherList = new String[][] {
+    {
+            "Wed April 12 - Breezy and Rain - 56F",
+            "Thu April 13 - Cloudy and Rain - 62F",
+            "Fri April 14 - Air Pollution Warning - 66F",
+            "Sat April 15 - Sunny and Windy- 70F",
+            "Sun April 16 - Prefect Sunny and Warm - 76F",
+            "Mon April 17 - Wear Shorts Today- 80F",
+            "Tue April 17 - Sunny and Warm - 83F",
+            "Wed April 19 - Mild and Cloudy - 86F",
+            "Thu April 20 - Sunny and Getting kind of hot - 90F",
+            "Fri April 21 - Sunny and This isn't funny anymore - 95F",
+            "Sat April 22 - Heatwave Warning - 100F",
+            "Sun April 23 - Sunny and HOT! - 109F",
+            "Mon April 24 - Sunny and This isn't funny anymore - 114F",
+            "Tue April 25 - Nearing Hell on Earth - 130F"
+    },
+    {
+            "Cloudless and chilly, with a high of 60F and a low of 53F. Low pressure air system moving in the evening",
+            "Thick clouds will move in early in the morning. A high of 63F and a low of 60F.",
+            "High air pollutants are to be expected and an advisory warning to stay indoors has been issued. A high of 68F and a low of 65F is to be expected.",
+            "Winds are picking up from the west as well as higher temperatures expected for at least the next few days. A high of 72F and a low of 68C.",
+            "The temperatures are continuing to increase in the mid-valley. Temperatures are expected to reach a high of 80F and low of 77F.",
+            "Wear shorts today as temperatures are expected to reach 80F today, while having a low of 78F.",
+            "Another warm and sunny day with a high of 84F and low of 83F.",
+            "A mild and cloudy day with a high of 86F and low of 84F. Clouds expected to clear by 6:00PM.",
+            "Another hot day and temperatures unexpectedly continue to rise, a high of 90.",
+            "A five temperature increase over yesterday, this isn't funny anymore! A high of 97F and low of 94F.",
+            "I believe we are in a heatwave, temperatures continue to rise with no sign of dropping, high of 103F and low of 97F.",
+            "Drastic temperature increase from yesterdays high temperature, high of 110F and low of 108F.",
+            "Limit outdoor exposure for extended period of times, drink extra water, High of 115F and a low of 113F.",
+            "DO NOT GO OUTSIDE WITHOUT PROPER PROTECTION, TEMPERATURES EXPECTED TO CONTINUE TO RISE, HIGH OF 130F and LOW OF 130F.",
+
+    }
+};

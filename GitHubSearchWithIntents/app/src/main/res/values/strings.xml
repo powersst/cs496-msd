@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GitHub Search with Intents</string>
+    <string name="loading_error_message">Woops.  We couldn\'t complete your search.  Check your internet connection and try again.</string>
+    <string name="title_activity_search_result_detail">SearchResultDetailActivity</string>
+</resources>
