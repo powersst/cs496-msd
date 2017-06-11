@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="pref_in_name_default">true</bool>
+    <bool name="pref_in_description_default">true</bool>
+    <bool name="pref_in_readme_default">false</bool>
+</resources>

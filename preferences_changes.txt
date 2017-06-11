@@ -1,0 +1,180 @@
+AndroidManifest.xml
+<activity
+            android:name=".SettingsActivity"
+            android:label="@string/action_settings"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+</activity>	
+
+
+MainActivity
+@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                startActivity(settingsIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+private void doGitHubSearch(String searchQuery) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String sort = sharedPreferences.getString(getString(R.string.pref_sort_key),
+                getString(R.string.pref_sort_default));
+        String language = sharedPreferences.getString(getString(R.string.pref_language_key),
+                getString(R.string.pref_language_default));
+        String user = sharedPreferences.getString(getString(R.string.pref_user_key), "");
+        boolean searchInName = sharedPreferences.getBoolean(getString(R.string.pref_in_name_key), true);
+        boolean searchInDescription = sharedPreferences.getBoolean(getString(R.string.pref_in_description_key), true);
+        boolean searchInReadme = sharedPreferences.getBoolean(getString(R.string.pref_in_readme_key), false);
+
+        String githubSearchUrl = GitHubUtils.buildGitHubSearchURL(searchQuery, sort, language, user,
+                searchInName, searchInDescription, searchInReadme);
+
+        Bundle argsBundle = new Bundle();
+        argsBundle.putString(SEARCH_URL_KEY, githubSearchUrl);
+        getSupportLoaderManager().restartLoader(GITHUB_SEARCH_LOADER_ID, argsBundle, this);
+    }
+
+
+
+SettingsActivity
+
+package com.example.android.githubsearchwithpreferences;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class SettingsActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
+    }
+}
+
+
+SettingsFragment
+
+package com.example.android.githubsearchwithpreferences;
+
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.v7.preference.EditTextPreference;
+import android.support.v7.preference.PreferenceFragmentCompat;
+
+/**
+ * Created by hessro on 5/23/17.
+ */
+
+public class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        addPreferencesFromResource(R.xml.prefs);
+        EditTextPreference userPref = (EditTextPreference)findPreference(getString(R.string.pref_user_key));
+        userPref.setSummary(userPref.getText());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals(getString(R.string.pref_user_key))) {
+            EditTextPreference userPref = (EditTextPreference)findPreference(key);
+            userPref.setSummary(userPref.getText());
+        }
+    }
+}
+
+
+
+
+
+
+Layout:
+activity_settings.xml
+<?xml version="1.0" encoding="utf-8"?>
+<fragment
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/settings_fragment"
+    android:name="com.example.android.githubsearchwithpreferences.SettingsFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+
+
+Menu:
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:icon="@drawable/ic_action_settings"
+        app:showAsAction="ifRoom" />
+
+</menu>
+
+
+Values: strings.xml
+<string name="action_settings">Settings</string>
+
+Values: arrays.xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_sort_entries">
+        <item>Best match</item>
+        <item>Stars</item>
+        <item>Forks</item>
+        <item>Most-recently updated</item>
+    </string-array>
+    
+    <string-array name="pref_sort_values">
+        <item></item>
+        <item>stars</item>
+        <item>forks</item>
+        <item>updated</item>
+    </string-array>
+
+    <string-array name="pref_language_entries">
+        <item>Any language</item>
+        <item>C</item>
+        <item>C++</item>
+        <item>Java</item>
+        <item>JavaScript</item>
+        <item>Python</item>
+        <item>Ruby</item>
+        <item>Swift</item>
+    </string-array>
+
+    <string-array name="pref_language_values">
+        <item></item>
+        <item>c</item>
+        <item>c++</item>
+        <item>java</item>
+        <item>javascript</item>
+        <item>python</item>
+        <item>ruby</item>
+        <item>swift</item>
+    </string-array>
+</resources>
+
+build.gradle
+compile 'com.android.support:preference-v14:25.2.0'

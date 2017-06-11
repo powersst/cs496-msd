@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_sort_entries">
+        <item>@string/pref_sort_match</item>
+        <item>@string/pref_sort_stars</item>
+        <item>@string/pref_sort_forks</item>
+        <item>@string/pref_sort_updated</item>
+    </string-array>
+    
+    <string-array name="pref_sort_values">
+        <item>@string/pref_sort_match_value</item>
+        <item>@string/pref_sort_stars_value</item>
+        <item>@string/pref_sort_forks_value</item>
+        <item>@string/pref_sort_updated_value</item>
+    </string-array>
+
+    <string-array name="pref_language_entries">
+        <item>@string/pref_language_any</item>
+        <item>@string/pref_language_c</item>
+        <item>@string/pref_language_cpp</item>
+        <item>@string/pref_language_java</item>
+        <item>@string/pref_language_javascript</item>
+        <item>@string/pref_language_python</item>
+        <item>@string/pref_language_ruby</item>
+        <item>@string/pref_language_swift</item>
+    </string-array>
+
+    <string-array name="pref_language_values">
+        <item>@string/pref_language_any_value</item>
+        <item>@string/pref_language_c_value</item>
+        <item>@string/pref_language_cpp_value</item>
+        <item>@string/pref_language_java_value</item>
+        <item>@string/pref_language_javascript_value</item>
+        <item>@string/pref_language_python_value</item>
+        <item>@string/pref_language_ruby_value</item>
+        <item>@string/pref_language_swift_value</item>
+    </string-array>
+</resources>
